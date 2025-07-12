@@ -5,7 +5,7 @@ import SkillCard from "../../components/SkillCard";
 import UserProfileForm from "../../components/Form";
 import AppButton from "../../components/AppButton";
 
-const HeroSection = () => {
+const LandingPage = () => {
    
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 7;
@@ -56,4 +56,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default LandingPage;
