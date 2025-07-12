@@ -18,14 +18,19 @@ app.use(express.json());
 
 // Test Route
 app.get("/", (req, res) => {
-  res.send("Skill Swap API is running 🚀");
+    res.send("Skill Swap API is running 🚀");
 });
 
 // Placeholder for user routes (we’ll build this next)
 app.use("/api/users", require("./routes/userRoutes"));
 
+app.use("/api/swaps", require("./routes/swapRoutes"));
+
+app.use("/api/feedback", require("./routes/feedbackRoutes"));
+
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
