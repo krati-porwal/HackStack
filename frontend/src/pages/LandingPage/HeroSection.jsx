@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Pagination from "../../components/pagination";
 import SkillCard from "../../components/SkillCard";
 import UserProfileForm from "../../components/Form";
+import AppButton from "../../components/AppButton";
 
 const HeroSection = () => {
    
@@ -44,6 +45,13 @@ const HeroSection = () => {
         <UserProfileForm onSubmit={handleSave} />
       </div>
     </section>
+
+    {/* //button */}
+    <AppButton variant="success" size="md">
+  Save
+</AppButton>
+
+
     </>
   );
 };
