@@ -1,5 +1,3 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SkillCard = ({
   profilePhoto = 'https://via.placeholder.com/80x80?text=Photo',
