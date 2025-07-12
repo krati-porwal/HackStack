@@ -45,6 +45,12 @@ const SwapRequestPage = () => {
   };
 
   return (
+    <> 
+     <Header
+        title="Skill Swap Platform"
+        showSearch={true}
+        userProfile={{ name: "Krati", avatar: "/profile1.png" }}
+      />
     <section className="row mx-0 py-5 justify-content-center">
       <div className="col-md-10 col-12 px-3">
 
@@ -85,6 +91,7 @@ const SwapRequestPage = () => {
         />
       </div>
     </section>
+    </>
   );
 };
 

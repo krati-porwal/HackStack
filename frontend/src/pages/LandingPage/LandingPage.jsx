@@ -2,6 +2,7 @@ import { useState } from "react";
 import Pagination from "../../components/pagination";
 import SkillCard from "../../components/SkillCard";
 import AppButton from "../../components/AppButton";
+import Header from "../../components/Header";
 
 
 const dummyProfiles = [
@@ -45,8 +46,8 @@ const LandingPage = () => {
 
   return (
     <section className="row mx-0 py-5 justify-content-center">
+       <Header />
       <div className="col-md-10 col-12 px-3">
-
         {/* Top Bar: Availability + Search + Login */}
         <div className="row mb-4 align-items-center">
           <div className="col-md-4 col-12 mb-2 mb-md-0">
