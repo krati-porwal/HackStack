@@ -47,6 +47,7 @@ const Header = ({
                   <Link className="nav-link fw-medium" to="/profile">
                     Profile
                   </Link>
+                  <Link className="nav-link fw-medium"to="/request">Request</Link>
                 </li>
               </ul>
             </nav>
