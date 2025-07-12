@@ -1,7 +1,10 @@
 import { useState } from "react";
-import Button from "../../common/Button"; // Replace with actual import path
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/AppButton"; // Reusable button
+import Header from "../../components/Header";
 
 const RegistrationPage = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -21,96 +24,75 @@ const RegistrationPage = () => {
       return;
     }
     console.log("Registering:", form);
-    // Add registration logic here
+    navigate("/login"); // Redirect to login after successful registration
   };
 
   return (
-    <section className="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-dark text-light">
+    <>
+    <Header/>
+    <section className="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
       <div className="row w-100 justify-content-center">
-        <div className="col-md-6 col-11 border rounded p-5" style={{ borderColor: "#00ffff", borderWidth: 2 }}>
+        <div
+          className="col-md-6 col-11 border rounded p-5"
+          style={{ borderColor: "#00ffff", borderWidth: 2 }}
+        >
           <form onSubmit={handleSubmit}>
-            <div className="row mb-4">
-              <div className="col-12">
-                <label htmlFor="name" className="form-label fw-bold">Name</label>
+            <h2 className="text-center mb-4 text-info fw-bold">
+              Create Your Account
+            </h2>
+
+            {["name", "email", "password", "confirmPassword"].map((field) => (
+              <div className="mb-3" key={field}>
+                <label
+                  htmlFor={field}
+                  className="form-label fw-semibold text-capitalize"
+                >
+                  {field === "confirmPassword"
+                    ? "Confirm Password"
+                    : field.charAt(0).toUpperCase() + field.slice(1)}
+                </label>
                 <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="form-control border border-info"
-                  value={form.name}
+                  type={field.includes("password") ? "password" : "text"}
+                  id={field}
+                  name={field}
+                  className="form-control border-info"
+                  value={form[field]}
                   onChange={handleChange}
                   required
                 />
               </div>
+            ))}
+
+            <div className="text-center my-4">
+              <Button
+                type="submit"
+                className="rounded-pill px-4 py-2 fw-bold"
+                style={{
+                  backgroundColor: "#00ffff",
+                  color: "#000",
+                  border: "none",
+                }}
+              >
+                Register
+              </Button>
             </div>
 
-            <div className="row mb-4">
-              <div className="col-12">
-                <label htmlFor="email" className="form-label fw-bold">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="form-control border border-info"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="row mb-4">
-              <div className="col-12">
-                <label htmlFor="password" className="form-label fw-bold">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  className="form-control border border-info"
-                  value={form.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="row mb-4">
-              <div className="col-12">
-                <label htmlFor="confirmPassword" className="form-label fw-bold">Confirm Password</label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  className="form-control border border-info"
-                  value={form.confirmPassword}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="row justify-content-center mb-3">
-              <div className="col-auto">
-                <Button
-                  type="submit"
-                  label="Register"
-                  className="rounded-circle px-4 py-2"
-                  style={{ backgroundColor: "#00ffff", color: "#000", borderRadius: "50%" }}
-                />
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col text-center">
-                <a href="/login" className="text-info text-decoration-none">
-                  Already have an account? Login
+            <div className="text-center">
+              <p>
+                Already have an account?{" "}
+                <a
+                  href="/login"
+                  className="text-info text-decoration-none fw-semibold"
+                >
+                  Login here
                 </a>
-              </div>
+              </p>
             </div>
           </form>
         </div>
       </div>
     </section>
+    </>
   );
 };
 

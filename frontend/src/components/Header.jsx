@@ -47,7 +47,11 @@ const Header = ({
                   <Link className="nav-link fw-medium" to="/profile">
                     Profile
                   </Link>
-                  <Link className="nav-link fw-medium"to="/request">Request</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link fw-medium" to="/request">
+                    Request
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -76,7 +80,7 @@ const Header = ({
             </div>
           )}
 
-          {/* User Profile */}
+          {/* User Profile or Auth Buttons */}
           {showUserProfile && (
             <div className="col-md-3 col-lg-1">
               <div className="d-flex align-items-center justify-content-end">
@@ -106,31 +110,33 @@ const Header = ({
                       aria-labelledby="userDropdown"
                     >
                       <li>
-                        <a className="dropdown-item" href="#profile">
+                        <Link className="dropdown-item" to="/profile">
                           Profile
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#settings">
+                        <Link className="dropdown-item" to="/settings">
                           Settings
-                        </a>
+                        </Link>
                       </li>
                       <li>
                         <hr className="dropdown-divider" />
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#logout">
+                        <Link className="dropdown-item" to="/logout">
                           Logout
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
                 ) : (
                   <div className="d-flex gap-2">
-                    <button className="btn btn-outline-primary btn-sm">
+                    <Link to="/login" className="btn btn-outline-primary btn-sm">
                       Login
-                    </button>
-                    <button className="btn btn-primary btn-sm">Sign Up</button>
+                    </Link>
+                    <Link to="/register" className="btn btn-primary btn-sm">
+                      Sign Up
+                    </Link>
                   </div>
                 )}
               </div>
