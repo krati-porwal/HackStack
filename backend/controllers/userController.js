@@ -45,4 +45,46 @@ const loginUser = async (req, res) => {
   });
 };
 
-module.exports = { registerUser, loginUser };
+const updateUserProfile = async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (!user) return res.status(404).json({ message: "User not found" });
+
+  const {
+    name,
+    location,
+    profilePhoto,
+    skillsOffered,
+    skillsWanted,
+    availability,
+    isPrivate,
+  } = req.body;
+
+  user.name = name || user.name;
+  user.location = location || user.location;
+  user.profilePhoto = profilePhoto || user.profilePhoto;
+  user.skillsOffered = skillsOffered || user.skillsOffered;
+  user.skillsWanted = skillsWanted || user.skillsWanted;
+  user.availability = availability || user.availability;
+  user.isPrivate = isPrivate ?? user.isPrivate;
+
+  const updatedUser = await user.save();
+  res.json(updatedUser);
+};
+
+const searchUsersBySkill = async (req, res) => {
+  const query = req.query.q;
+  if (!query) return res.status(400).json({ message: "Missing search keyword" });
+
+  const users = await User.find({
+    isPrivate: false,
+    $or: [
+      { skillsOffered: { $regex: query, $options: "i" } },
+      { skillsWanted: { $regex: query, $options: "i" } },
+    ],
+  }).select("-password");
+
+  res.json(users);
+};
+
+module.exports = { registerUser, loginUser, updateUserProfile,
+  searchUsersBySkill };
