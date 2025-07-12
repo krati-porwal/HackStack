@@ -2,6 +2,7 @@ import { useState } from "react";
 import SwapActionCard from "../../components/SwapActionCard";
 import Pagination from "../../components/pagination";
 import AppButton from "../../components/AppButton";
+import Header from "../../components/Header";
 
 const dummyRequests = [
   {

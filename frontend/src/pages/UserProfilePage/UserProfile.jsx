@@ -1,4 +1,4 @@
-import UserProfileForm from "../../components/UserProfileForm";
+import UserProfileForm from "../../components/Form";
 import Header from "../../components/Header";
 import { useState } from "react";
 
