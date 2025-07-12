@@ -1,9 +1,11 @@
+import HeroSection from "./pages/LandingPage/HeroSection"
+
 const App = () =>{
  
 
   return (
     <>
-      <h1>hi</h1>
+      <HeroSection/>
     </>
   )
 }
